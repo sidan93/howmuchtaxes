@@ -1,0 +1,26 @@
+<head>
+  <title>howmuchtaxes</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content">
+      {{> main}}
+    </div>
+  </div>
+</body>
+
+<template name="main">
+  {{#if getLayout layoutList.OPENPAGE}}
+    {{> openpage}}
+  {{/if}}
+  {{#if getLayout layoutList.ENTERSALLARY}}
+    {{> salary}}
+  {{/if}}
+  {{#if getLayout layoutList.BASETAXES}}
+    {{> basetaxes}}
+  {{/if}}
+  {{#if getLayout layoutList.ADDITIONTAXES}}
+    {{> additiontaxes}}
+  {{/if}}
+</template>

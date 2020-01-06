@@ -1,0 +1,20 @@
+.basetaxes {
+  display: flex;
+  background-color: cornflowerblue;
+  width: 100%;
+  height: 100%;
+  margin: 100px;
+  align-items: center;
+}
+
+.basetaxes .chart {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  background-color: white;
+}
+
+.basetaxes .nav button {
+  width: 100px;
+  height: 50px;
+}

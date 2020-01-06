@@ -1,0 +1,31 @@
+<template name="basetaxes">
+  <div class="basetaxes">
+    <div class="chart">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="text">
+      {{#if getLayout layoutList.NET}}
+        Тут красивый текст про текущую зп
+      {{/if}}
+      {{#if getLayout layoutList.NDFL}}
+        Тут красивый текст про НФДЛ
+      {{/if}}
+      {{#if getLayout layoutList.OMS}}
+        Тут Красивый текст про мед страхование
+      {{/if}}
+      {{#if getLayout layoutList.OPS}}
+        Тут Красивый текст про пенсионный фонд
+      {{/if}}
+      {{#if getLayout layoutList.OSS}}
+        Тут Красивый текст про соц страхование
+      {{/if}}
+      {{#if getLayout layoutList.TR}}
+        Тут Красивый текст про травматизм
+      {{/if}}
+    </div>
+    <div class="nav">
+      <button class="next">Еще</button>
+      <button class="nextpage">Хочу больше</button>
+    </div>
+  </div>
+</template>

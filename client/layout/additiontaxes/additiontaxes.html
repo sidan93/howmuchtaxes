@@ -1,0 +1,35 @@
+<template name="additiontaxes">
+  <div class="additiontaxes">
+    <div class="chart">
+      <canvas id="additionChart"></canvas>
+    </div>
+    <div class="text"> 
+      <div class="range-block">
+        Твоя зарплата на руки (net)
+        <input class="net" type="range" min="5000" max="100000" step="1000" value="{{getNet}}">
+        <span class="net-value">{{getNet}}</span>
+      </div>
+      <div class="range-block">
+        Сколько ты тратишь на еду?
+        <input class="food" type="range" min="0" max="{{getFoodMax}}" step="100" value="{{defaultParams.food}}">
+        <span class="food-value">{{defaultParams.food}}</span>
+      </div>
+      <div class="range-block">
+        Сколько ты тратишь на квартиру/дом?
+        <input class="household" type="range" min="0" max="{{getHouseholdMax}}" step="100" value="{{defaultParams.household}}">
+        <span class="household-value">{{defaultParams.household}}</span>
+      </div>        
+
+      <div class="range-block">
+        Сколько ты тратишь на бензин?
+        <input class="petrol" type="range" min="0" max="{{getPetrolMax}}" step="100" value="{{defaultParams.petrol}}">
+        <span class="petrol-value">{{defaultParams.petrol}}</span>
+      </div>
+      <div class="range-block">
+        Сколько ты тратишь на остальное?
+        <input class="other" type="range" min="0" max="{{getOtherMax}}" step="100" value="{{defaultParams.other}}">
+        <span class="other-value">{{defaultParams.other}}</span>
+      </div>
+    </div>  
+  </div>
+</template> 
