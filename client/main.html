@@ -1,0 +1,50 @@
+<head>
+  <title>howmuchtaxes</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    {{> in_data}}
+    {{> chart}}
+    {{> result}}
+  </div>
+</body>
+
+<template name="startPage">
+  <div class="test">
+    
+  </div>
+</template>
+
+<template name="in_data">
+  <div class="data">
+    <h1>Узнай сколько ты платишь налогов?</h1>
+      Сколько ты получаешь на руки?
+      <input type="number" id="net_salary" min="4" value='30000'>
+      <button id="calc">Расчитать</button>
+      Сколько тратишь на еду?
+      <input type="number" id="food" min="4" value='10000'>
+      Сколькн тратишь на бензин?
+      <input type="number" id="petrol" min="3" value='2000'>
+      Расходы на хоз. нуждды?
+      <input type="number" id="household" min="3" value='3000'>
+      Сколько откладываешь? (Вся не учтенная сумма, уйдет на развлечения)
+      <input type="number" id="hold" min="2" value='0'>
+      <button id="calc_2">Расчитать</button>
+  </div>
+</template>
+
+
+<template name="chart">
+  <div class="chart">
+    <canvas id="myChart"></canvas>
+  </div>
+</template>
+
+<template name="result">
+  <div class="result">
+    По факту потрачено: {{{get_money}}} рублей.
+    Ушло государству:   {{{get_result}}} рублей.
+    Процент налогов:    {{{get_taxes}}}%.
+  </div>
+</template>
