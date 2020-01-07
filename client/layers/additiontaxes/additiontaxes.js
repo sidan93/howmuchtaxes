@@ -1,9 +1,9 @@
 import { Template } from 'meteor/templating';
 import { TaxesChart, ChartItem } from '../../taxes/chart';
 import { AdditionTaxes } from '../../taxes/taxes';
+import { layerParams } from '../../layer';
 
 import './additiontaxes.html';
-import { layoutParams } from '../../layout';
 
 let additiontaxes = new AdditionTaxes();
 let fieldList = [
@@ -15,22 +15,23 @@ let fieldList = [
 ];
 let chart = new TaxesChart(additiontaxes, fieldList);
 chart.addAll();
-
-let defaultParams = {
-  petrol: Math.min(parseInt(layoutParams.net * 0.1), 5000),  // Посчитаем как 10% от зп или 5к максимум,
-  food :  Math.min(parseInt(layoutParams.net * 0.5), 15000), // Как полвина ЗП или 15к максимум
-  household: Math.min(parseInt(layoutParams.net * 0.05), 3000), // Как 5% или 3к
-}
-// Все остальное посчитаем в расходы на кафе и прочие покупки
-defaultParams.other = Math.max(layoutParams.net - defaultParams.petrol - defaultParams.food - defaultParams.household, 0);
-
+let defaultParams = null;
 
 Template.additiontaxes.onRendered(() => {
-  additiontaxes.setNet(layoutParams.net);
+  defaultParams = {
+    petrol: Math.min(parseInt(layerParams.net * 0.1), 5000),  // Посчитаем как 10% от зп или 5к максимум,
+    food :  Math.min(parseInt(layerParams.net * 0.5), 15000), // Как полвина ЗП или 15к максимум
+    household: Math.min(parseInt(layerParams.net * 0.05), 3000), // Как 5% или 3к
+  }
+  // Все остальное посчитаем в расходы на кафе и прочие покупки
+  defaultParams.other = Math.max(layerParams.net - defaultParams.petrol - defaultParams.food - defaultParams.household, 0);
+
+  additiontaxes.setNet(layerParams.net);
   additiontaxes.setPetrol(defaultParams.petrol);
   additiontaxes.setFood(defaultParams.food);
   additiontaxes.setHousehold(defaultParams.household);
   additiontaxes.setOther(defaultParams.other);
+  
   calcMaxValues();
   chart.createChart('additionChart');
 
@@ -96,7 +97,7 @@ Template.additiontaxes.events({
 
 Template.additiontaxes.helpers({
   getNet() {
-    return layoutParams.net;
+    return layerParams.net;
   },
   defaultParams() {
     return defaultParams;

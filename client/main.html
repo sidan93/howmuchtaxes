@@ -11,16 +11,16 @@
 </body>
 
 <template name="main">
-  {{#if getLayout layoutList.OPENPAGE}}
+  {{#if getLayer layerList.OPENPAGE}}
     {{> openpage}}
   {{/if}}
-  {{#if getLayout layoutList.ENTERSALLARY}}
+  {{#if getLayer layerList.ENTERSALLARY}}
     {{> salary}}
   {{/if}}
-  {{#if getLayout layoutList.BASETAXES}}
+  {{#if getLayer layerList.BASETAXES}}
     {{> basetaxes}}
   {{/if}}
-  {{#if getLayout layoutList.ADDITIONTAXES}}
+  {{#if getLayer layerList.ADDITIONTAXES}}
     {{> additiontaxes}}
   {{/if}}
 </template>

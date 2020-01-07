@@ -1,10 +1,10 @@
 import { Template } from 'meteor/templating';
-import { changePage, layoutList } from '../../layout';
+import { changePage, layerList } from '../../layer';
 import './openpage.html';
 
 
 Template.openpage.events({
   'click button'() {
-    changePage(layoutList.ENTERSALLARY);
+    changePage(layerList.ENTERSALLARY);
   }
 });

@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { layoutParams, changePage, layoutList } from '../../layout';
+import { layerParams, changePage, layerList } from '../../layer';
 import { Taxes } from '../../taxes/taxes';
 import { TaxesChart, ChartItem } from '../../taxes/chart';
 import { ReactiveVar } from 'meteor/reactive-var';
@@ -16,7 +16,7 @@ let fieldList = [
 ]
 let chart = new TaxesChart(taxes, fieldList);
 
-let localLayoutList = {
+let localLayerList = {
   NET: 0,
   NDFL: 1,
   OMS: 2,
@@ -24,32 +24,31 @@ let localLayoutList = {
   OPS: 4,
   TR: 5
 };
-let localLayout = new ReactiveVar(localLayoutList.NET);
+let localLayer = new ReactiveVar(localLayerList.NET);
 
 Template.basetaxes.onRendered(() => {
-  taxes.setNet(layoutParams.net);
+  taxes.setNet(layerParams.net);
   chart.createChart('myChart');
 });
 
 Template.basetaxes.events({
   'click button.next'() {
-    let layout = localLayout.get();
+    let layout = localLayer.get();
     if (chart.addNext())
-      localLayout.set(layout + 1);
+      localLayer.set(layout + 1);
   },
 
   'click button.nextpage'() {
-    changePage(layoutList.ADDITIONTAXES);
+    changePage(layerList.ADDITIONTAXES);
   }
 });
 
 Template.basetaxes.helpers({
-  getLayout(layoutId) {
-    console.log('3 getLayout', localLayout.get(), layoutId);
-    return localLayout.get() == layoutId;
+  getLayer(layoutId) {
+    return localLayer.get() == layoutId;
   },
 
-  layoutList() {
-    return localLayoutList;
+  layerList() {
+    return localLayerList;
   }
 });

@@ -1,24 +1,21 @@
 import { Template } from 'meteor/templating';
-import { layout, layoutList } from './layout'
-import Chart from 'chart.js';
-import './layout/openpage/openpage';
-import './layout/salary/salary';
-import './layout/basetaxes/basetaxes';
-import './layout/additiontaxes/additiontaxes';
+import { layer, layerList } from './layer'
+import './layers/openpage/openpage';
+import './layers/salary/salary';
+import './layers/basetaxes/basetaxes';
+import './layers/additiontaxes/additiontaxes';
 
 import './main.html';
 
 
-
 Template.main.helpers({
-  getLayout(pageId) {
-    console.log('getLayout', layout, pageId)
+  getLayer(pageId) {
     if (pageId >= 0)
-      return layout.get() == pageId;
+      return layer.get() == pageId;
     return false; 
   },
 
-  layoutList() {
-    return layoutList;
+  layerList() {
+    return layerList;
   }
 });
